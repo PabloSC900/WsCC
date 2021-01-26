@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- El objeto casa esta compuesto por más objetos, por lo que 
+	hay dos maneras de crearlo.
+	1º Opción: hacerlo directamente de una vez y solo habra un id ("casa1")
+	2º Opción: crear individualmente cada uno de los objetos, cada uno con su id, 
+	y luego referenciarlos al objeto casa ("casa1")-->
+
+	<!-- 1º Opción 
+
+	<bean id="casa1" class="entidad.Casa">
+		<property name="precio" value="1000"></property>
+		<property name="propietario">
+			<bean class="entidad.Persona">
+				<property name="nombre" value="Pablo"></property>
+				<property name="edad" value="30"></property>
+				<property name="dni" value="12345678A"></property>
+				<property name="direccion">
+					<bean class="entidad.Direccion">
+						<property name="tipoVia" value="Calle"></property>
+						<property name="nombreVia" value="Egeo"></property>
+						<property name="cp" value="223344"></property>
+						<property name="numero" value="7"></property>
+					</bean>				
+				</property>
+			</bean>		
+		</property>
+		<property name="direccion">
+			<bean class="entidad.Direccion">
+				<property name="tipoVia" value="Calle"></property>
+				<property name="nombreVia" value="Egeo"></property>
+				<property name="cp" value="223344"></property>
+				<property name="numero" value="7"></property>
+			</bean>		
+		</property>
+		<property name="listaHabitaciones">
+			<bean class="java.util.ArrayList">
+				<constructor-arg>
+					<list>
+						
+						
+					</list>
+				</constructor-arg>
+			</bean>		
+		</property>
+		<property name="listaInquilinos">
+			<bean class="java.util.ArrayList">
+				<constructor-arg>
+					<list>
+						
+						
+					</list>
+				</constructor-arg>
+			</bean>		
+		</property>
+	</bean>
+	
+	-->
+	
+
+	<!-- 2º Opción -->
+	
+	<bean id="direccion2" class="entidad.Direccion">
+		<property name="tipoVia" value="Sector"></property>
+		<property name="nombreVia" value="Mares"></property>
+		<property name="cp" value="776688"></property>
+		<property name="numero" value="2"></property>	
+	</bean>
+	
+	<bean id="propietario2" class="entidad.Persona">
+		<property name="nombre" value="Alvaro"></property>
+		<property name="edad" value="28"></property>
+		<property name="dni" value="12345678B"></property>
+		<property name="direccion" ref="direccion2"></property>	
+	</bean>
+
+	<bean id="habitacion3" class="entidad.Habitacion">
+		<property name="m2" value="10.2"></property>
+		<property name="tipoHabitacion" value="Salon"></property>			
+	</bean>
+	
+	<bean id="habitacion4" class="entidad.Habitacion">
+		<property name="m2" value="6.4"></property>
+		<property name="tipoHabitacion" value="Cocina"></property>
+	</bean>
+	
+	<bean id="listaHabitaciones2" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<ref bean="habitacion3"/>
+				<ref bean="habitacion4"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="inquilino3" class="entidad.Persona">
+		<property name="nombre" value="Jesus"></property>
+		<property name="edad" value="22"></property>
+		<property name="dni" value="12345678C"></property>
+		<property name="direccion" ref="direccion2"></property>	
+	</bean>
+	
+	<bean id="inquilino4" class="entidad.Persona">
+		<property name="nombre" value="Marcos"></property>
+		<property name="edad" value="30"></property>
+		<property name="dni" value="12345678D"></property>
+		<property name="direccion" ref="direccion2"></property>	
+	</bean>
+	
+	<bean id="listaInquilinos2" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<ref bean="inquilino3"/>
+				<ref bean="inquilino4"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="casa2" class="entidad.Casa">
+		<property name="precio" value="1500"></property>
+		<property name="propietario" ref="propietario2"></property>
+		<property name="direccion" ref="direccion2"></property>
+		<property name="listaHabitaciones" ref="listaHabitaciones2"></property>
+		<property name="listaInquilinos" ref="listaInquilinos2"></property>		
+	</bean>
+
+
+</beans>
