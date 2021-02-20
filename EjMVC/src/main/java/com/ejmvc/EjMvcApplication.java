@@ -1,0 +1,13 @@
+package com.ejmvc;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class EjMvcApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(EjMvcApplication.class, args);
+	}
+
+}
