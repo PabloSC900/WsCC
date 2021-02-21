@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Videojuegos</title>
+	</head>
+	<body>		
+		<h1 style="color:blue" th:text="'Bienvenido ' + ${nombreUsuario}"></h1>	
+		<h3 th:each="valor : ${listaVideojuegos}">
+	    	<span th:text="${valor.nombre}"></span>		    	
+		</h3>
+	</body>
+</html>
