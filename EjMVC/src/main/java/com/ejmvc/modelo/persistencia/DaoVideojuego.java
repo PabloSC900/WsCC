@@ -8,7 +8,7 @@ import com.ejmvc.modelo.entidad.Videojuego;
 @Repository
 public interface DaoVideojuego extends JpaRepository<Videojuego, Integer> {
 	
-	public Videojuego findById(int id);
+	//public Videojuego findById(int id);
 	
 	
 

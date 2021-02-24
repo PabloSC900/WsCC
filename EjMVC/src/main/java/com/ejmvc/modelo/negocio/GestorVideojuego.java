@@ -1,6 +1,7 @@
 package com.ejmvc.modelo.negocio;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,10 +26,13 @@ public class GestorVideojuego {
 	
 	public Videojuego cargarVj(int id) {
 		
-		Videojuego vj = new Videojuego();
-		vj = daoVideojuego.findById(id);
+		Optional<Videojuego> vj = daoVideojuego.findById(id);		
+		if (vj.isPresent()) {
+			return vj.get();
+		} else {
+			return null;
+		}
 		
-		return vj;
 		
 	}
 	
